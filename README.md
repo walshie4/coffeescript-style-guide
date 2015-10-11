@@ -56,7 +56,8 @@ UNIX line endings should always be used.
 
 Align similar characters.  Where readability is improved align characters which
 appear in subsequent lines such as `=`, keywords such as `and` or `is`, `{`,
-`[`, etc.
+`[`, etc. Spacing should allow all values to be completed and include a single
+padding whitespace character (see elephant example below).
 
 ```coffeescript
 switch value
@@ -69,9 +70,11 @@ b     = 2
 c     = 25
 apple = 'banana'
 
-if heavy and
-   blue  and
-   large
+if animal is   heavy   and
+   animal is   blue    and
+   animal in   mammals and
+   animal in   large   and
+   animal isnt whale
   console.log 'elephant'
 ```
 
