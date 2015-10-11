@@ -49,6 +49,8 @@ The details in this guide have been very heavily inspired by several existing st
 
 Files should be terminated with a newline character.
 
+UNIX line endings should always be used.
+
 <a name='align_characters'/>
 ### Align Characters
 
@@ -532,6 +534,7 @@ console.log args... # Yes
 
 (a, b, c, rest...) -> # Yes
 ```
+
 
 [coffeescript]: http://jashkenas.github.com/coffee-script/
 [coffeescript-issue-425]: https://github.com/jashkenas/coffee-script/issues/425
