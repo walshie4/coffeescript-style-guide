@@ -46,6 +46,11 @@ The details in this guide have been very heavily inspired by several existing st
 <a name="code_layout"/>
 ## Code layout
 
+<a name="file_endings"/>
+### File Endings
+
+Files should be terminated with a newline character.
+
 <a name="tabs_or_spaces"/>
 ### Tabs or Spaces?
 
@@ -100,7 +105,7 @@ bar:
 <a name="encoding"/>
 ### Encoding
 
-UTF-8 is the preferred source file encoding.
+`UTF-8` is the preferred source file encoding.
 
 <a name="module_imports"/>
 ## Module Imports
@@ -109,6 +114,7 @@ If using a module system (CommonJS Modules, AMD, etc.), `require` statements sho
 
 ```coffeescript
 require 'lib/setup'
+
 Backbone = require 'backbone'
 ```
 These statements should be grouped in the following order:
@@ -116,6 +122,8 @@ These statements should be grouped in the following order:
 1. Standard library imports _(if a standard library exists)_
 2. Third party library imports
 3. Local imports _(imports specific to this application or library)_
+
+Each section should be separated by one blank line.
 
 <a name="whitespace"/>
 ## Whitespace in Expressions and Statements
@@ -136,35 +144,38 @@ Avoid extraneous whitespace in the following situations:
        console.log x , y # No
     ```
 
-Additional recommendations:
 
-- Always surround these binary operators with a **single space** on either side
+- Always surround these binary operators with a single space on the either side. Additional spaces may be used on the left side to align operators for better readability.
 
     - assignment: `=`
 
         - _Note that this also applies when indicating default parameter value(s) in a function declaration_
 
            ```coffeescript
-           test: (param = null) -> # Yes
-           test: (param=null) -> # No
+           test: (param    = null,
+                  otherArg = 14) -> # Yes
+           test: (param=null,
+                  otherArg=14) -> # No
            ```
 
     - augmented assignment: `+=`, `-=`, etc.
     - comparisons: `==`, `<`, `>`, `<=`, `>=`, `unless`, etc.
     - arithmetic operators: `+`, `-`, `*`, `/`, etc.
 
-    - _(Do not use more than one space around these operators)_
-
         ```coffeescript
            # Yes
+           x       = 1
+           y       = 1
+           fooBar  = 3
+           sample += 4
+           test    * 0.5
+
+           # No
            x = 1
            y = 1
            fooBar = 3
-
-           # No
-           x      = 1
-           y      = 1
-           fooBar = 3
+           sample += 4
+           test * 0.5
         ```
 
 <a name="comments"/>
@@ -181,17 +192,19 @@ If a comment is short, the period at the end can be omitted.
 
 Block comments apply to the block of code that follows them.
 
-Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes.
+Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes. A block comment should be padded by one empty row on top and bottom.
 
 Paragraphs inside of block comments are separated by a line containing a single `#`.
 
 ```coffeescript
+  #
   # This is a block comment. Note that if this were a real block
   # comment, we would actually be describing the proceeding code.
   #
   # This is the second paragraph of the same block comment. Note
   # that this paragraph was separated from the previous paragraph
   # by a line containing a single comment character.
+  #
 
   init()
   start()
@@ -224,9 +237,9 @@ However, inline comments can be useful in certain scenarios:
 <a name="naming_conventions"/>
 ## Naming Conventions
 
-Use `camelCase` (with a leading lowercase character) to name all variables, methods, and object properties.
+Use `camelCase` to name all variables, methods, and object properties.
 
-Use `CamelCase` (with a leading uppercase character) to name all classes. _(This style is also commonly referred to as `PascalCase`, `CamelCaps`, or `CapWords`, among [other alternatives][camel-case-variations].)_
+Use `PascalCase` to name all classes.
 
 _(The **official** CoffeeScript convention is camelcase, because this simplifies interoperability with JavaScript. For more on this decision, see [here][coffeescript-issue-425].)_
 
@@ -240,6 +253,25 @@ Methods and variables that are intended to be "private" should begin with a lead
 
 ```coffeescript
 _privateMethod: ->
+```
+
+<a name='objects'/>
+## Objects
+
+Objects should be nested in-line unless a level with multiple key/value pairs is
+included.  Colons should be aligned for values of the same level.  Nested values
+should start two characters deeper than the previous key.
+
+```coffeescript
+test = sample: nested: values: 'object' # Yes
+test = sample:
+         nested:
+           values: 'object' # No
+
+test = sample: nested:
+                 values   : [1,2,3]
+                 meta_info: ['o','t','t']
+
 ```
 
 <a name="functions"/>
@@ -260,6 +292,23 @@ Do not use parentheses when declaring functions that take no arguments:
 bar = -> # Yes
 bar = () -> # No
 ```
+
+When a function declaration cannot fit on a single line align the arguments one
+per line in the following fashion:
+
+```coffeescript
+foo = (sample_name,
+       sample_value,
+       testing_object,
+       control_value        = 789,
+       randomization_factor = 16.0) -> # Yes
+
+foo = (sample_name, sample_value, testing_object, control_value, randomization_factor) -> # No
+```
+
+Note that when default parameter values are used they are aligned as mentioned
+above.
+
 
 In cases where method calls are being chained and the code does not fit on a single line, each call should be placed on a separate line and indented by one level (i.e., two spaces), with a leading `.`.
 
@@ -287,31 +336,6 @@ print inspect value
 new Tag(new Value(a, b), new Arg(c))
 ```
 
-You will sometimes see parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
-
-```coffeescript
-($ '#selektor').addClass 'klass'
-
-(foo 4).bar 8
-```
-
-This is in contrast to:
-
-```coffeescript
-$('#selektor').addClass 'klass'
-
-foo(4).bar 8
-```
-
-In cases where method calls are being chained, some adopters of this style prefer to use function grouping for the initial call only:
-
-```coffeescript
-($ '#selektor').addClass('klass').hide() # Initial call only
-(($ '#selektor').addClass 'klass').hide() # All calls
-```
-
-The function grouping style is not recommended. However, **if the function grouping style is adopted for a particular project, be consistent with its usage.**
-
 <a name="strings"/>
 ## Strings
 
@@ -327,37 +351,11 @@ Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unl
 <a name="conditionals"/>
 ## Conditionals
 
-Favor `unless` over `if` for negative conditions.
+Choice between keywords such as `is`, `isnt`, `unless`, `if`, etc. should be
+made with regards to code readability.
 
-Instead of using `unless...else`, use `if...else`:
-
-```coffeescript
-  # Yes
-  if true
-    ...
-  else
-    ...
-
-  # No
-  unless false
-    ...
-  else
-    ...
-```
-
-Multi-line if/else clauses should use indentation:
-
-```coffeescript
-  # Yes
-  if true
-    ...
-  else
-    ...
-
-  # No
-  if true then ...
-  else ...
-```
+Multi-line if/else clauses should use indentation.  Use inline form
+when the conditional body only contains one statement.
 
 <a name="looping_and_comprehensions"/>
 ## Looping and Comprehensions
@@ -414,11 +412,11 @@ The annotation keyword should be followed by a colon and a space, and a descript
   processPayload()
 ```
 
-If multiple lines are required by the description, indent subsequent lines with two spaces:
+If multiple lines are required by the description, indent subsequent lines to align text:
 
 ```coffeescript
   # TODO: Ensure that the value returned by this call falls within a certain
-  #   range, or throw an exception.
+  #       range, or throw an exception.
   analyze()
 ```
 
@@ -452,6 +450,8 @@ temp or= {} # Yes
 temp = temp || {} # No
 ```
 
+`0.54` is preferred over `.54`.
+
 Prefer shorthand notation (`::`) for accessing an object's prototype:
 
 ```coffeescript
@@ -464,13 +464,6 @@ Prefer `@property` over `this.property`.
 ```coffeescript
 return @property # Yes
 return this.property # No
-```
-
-However, avoid the use of **standalone** `@`:
-
-```coffeescript
-return this # Yes
-return @ # No
 ```
 
 Avoid `return` where not required, unless the explicit return increases clarity.
