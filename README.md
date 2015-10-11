@@ -181,7 +181,7 @@ Avoid extraneous whitespace in the following situations:
     ```
 
 
-- Always surround these binary operators with a single space on the either side. Additional spaces may be used on the left side to align operators for better readability.
+- Always surround these binary operators with a single space on either side. Additional spaces may be used on the left side to align operators for better readability.
 
     - assignment: `=`
 
@@ -339,8 +339,8 @@ bar = () -> # No
 Only use fat arrow syntax when `@` is needed within the function body
 
 ```coffeescript
-foo = => console.log 'bar' # No
-foo = => console.log @bar  # Yes
+foo = (bar) => console.log bar # No
+foo = => console.log @bar      # Yes
 ```
 
 Don't assign default arguments in front of positional arguments:
