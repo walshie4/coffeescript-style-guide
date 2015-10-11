@@ -86,9 +86,11 @@ Limit all lines to a maximum of 80 characters.
 <a name='object_braces'/>
 ### Object Braces
 
-Omit object braces unless value is in-line, in an array, or it improves readability.
+Omit object braces unless value is in an array, or it improves readability.
 
 ```coffeescript
+inline = value: 56
+
 example = [
   { sample: 'value' }
   { other : 'test'  }
