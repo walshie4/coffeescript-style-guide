@@ -70,10 +70,10 @@ b     = 2
 c     = 25
 apple = 'banana'
 
-if animal is   heavy   and
-   animal is   blue    and
-   animal in   mammals and
-   animal in   large   and
+if animal in   heavy_animals and
+   animal in   blue_animals  and
+   animal in   mammals       and
+   animal in   large_animals and
    animal isnt whale
   console.log 'elephant'
 ```
