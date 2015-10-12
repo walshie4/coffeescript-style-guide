@@ -196,7 +196,7 @@ Avoid extraneous whitespace in the following situations:
             test: (param    = null,
                    otherArg = 14) -> # Yes
             test: (param=null,
-                   otherArg=14) -> # No
+                   otherArg=14) ->   # No
            ```
 
     - augmented assignment: `+=`, `-=`, etc.
@@ -229,7 +229,8 @@ The first word of the comment should be capitalized, unless the first word is an
 Comments should aim to explain the 'why' behind a piece of code and should be
 written with proper punctuation unless very small.
 
-Where possible align comments for better readability:
+Where possible align comments for better readability (comments on their own line
+should always be aligned to the current indent where code would go):
 
 ```coffeescript
 value = Math.floor(29 * arg) # Note about accounting for edge case
@@ -264,7 +265,9 @@ Paragraphs inside of block comments are separated by a line containing a single 
 <a name="inline_comments"/>
 ### Inline Comments
 
-Inline comments are placed on the line immediately above the statement that they are describing. If the inline comment is sufficiently short, it can be placed on the same line as the statement (separated by a single space from the end of the statement).
+Inline comments are placed on the line immediately above the statement that they are describing.
+If the inline comment is sufficiently short, it can be placed on the same line as the
+statement (separated by a single space from the end of the statement).
 
 All inline comments should start with a `#` and a single space.
 
@@ -311,14 +314,14 @@ included.  Colons should be aligned for values of the same level.  Nested values
 should start two characters deeper than the previous key.
 
 ```coffeescript
-test = sample: nested: values: 'object'   # Yes
+test = sample: nested: values: 'object' # Yes
 test = sample:
          nested:
-           values: 'object'               # No
+           values: 'object'             # No
 
 test = sample: nested:
-                 values   : [1,2,3]
-                 meta_info: ['o','t','t'] # Yes
+                 values   : [1, 2, 3]
+                 meta_info: ['o', 't', 't'] # Yes
 
 ```
 
