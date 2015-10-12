@@ -229,7 +229,7 @@ The first word of the comment should be capitalized, unless the first word is an
 Comments should aim to explain the 'why' behind a piece of code and should be
 written with proper punctuation unless very small.
 
-Where possible align comments for better readability (comments on their own line
+Where possible and makes sense align comments for better readability (comments on their own line
 should always be aligned to the current indent where code would go):
 
 ```coffeescript
