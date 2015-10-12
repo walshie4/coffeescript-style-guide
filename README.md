@@ -193,10 +193,10 @@ Avoid extraneous whitespace in the following situations:
         - _Note that this also applies when indicating default parameter value(s) in a function declaration_
 
            ```coffeescript
-           test: (param    = null,
-                  otherArg = 14) -> # Yes
-           test: (param=null,
-                  otherArg=14) -> # No
+            test: (param    = null,
+                   otherArg = 14) -> # Yes
+            test: (param=null,
+                   otherArg=14) -> # No
            ```
 
     - augmented assignment: `+=`, `-=`, etc.
@@ -311,14 +311,14 @@ included.  Colons should be aligned for values of the same level.  Nested values
 should start two characters deeper than the previous key.
 
 ```coffeescript
-test = sample: nested: values: 'object' # Yes
+test = sample: nested: values: 'object'   # Yes
 test = sample:
          nested:
-           values: 'object' # No
+           values: 'object'               # No
 
 test = sample: nested:
                  values   : [1,2,3]
-                 meta_info: ['o','t','t']
+                 meta_info: ['o','t','t'] # Yes
 
 ```
 
@@ -331,13 +331,13 @@ When declaring a function that takes arguments, always use a single space after 
 
 ```coffeescript
 foo = (arg1, arg2) -> # Yes
-foo = (arg1, arg2)-> # No
+foo = (arg1, arg2)->  # No
 ```
 
 Do not use parentheses when declaring functions that take no arguments:
 
 ```coffeescript
-bar = -> # Yes
+bar = ->    # Yes
 bar = () -> # No
 ```
 
@@ -404,7 +404,7 @@ new Tag(new Value(a, b), new Arg(c))
 Use string interpolation instead of string concatenation:
 
 ```coffeescript
-"this is an #{adjective} string" # Yes
+"this is an #{adjective} string"      # Yes
 "this is an " + adjective + " string" # No
 ```
 
@@ -508,7 +508,7 @@ If a custom annotation is required, the annotation should be documented in the p
 `or=` should be used when possible:
 
 ```coffeescript
-temp or= {} # Yes
+temp or= {}       # Yes
 temp = temp || {} # No
 ```
 
@@ -517,14 +517,14 @@ temp = temp || {} # No
 Prefer shorthand notation (`::`) for accessing an object's prototype:
 
 ```coffeescript
-Array::slice # Yes
+Array::slice          # Yes
 Array.prototype.slice # No
 ```
 
 Prefer `@property` over `this.property`.
 
 ```coffeescript
-return @property # Yes
+return @property     # Yes
 return this.property # No
 ```
 
@@ -533,7 +533,7 @@ Avoid `return` where not required, unless the explicit return increases clarity.
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
 
 ```coffeescript
-console.log args... # Yes
+console.log args...   # Yes
 
 (a, b, c, rest...) -> # Yes
 ```
