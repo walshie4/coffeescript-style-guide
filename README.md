@@ -447,15 +447,9 @@ To iterate over the keys and values of objects:
 
 ```coffeescript
 object = one: 1, two: 2
-alert("#{key} = #{value}") for key, value of object
+for key, value of object
+  alert("#{key} = #{value}")
 ```
-
-<a name="extending_native_objects"/>
-## Extending Native Objects
-
-Do not modify native objects.
-
-For example, do not modify `Array.prototype` to introduce `Array#forEach`.
 
 <a name="exceptions"/>
 ## Exceptions
@@ -531,7 +525,7 @@ return @property     # Yes
 return this.property # No
 ```
 
-Avoid `return` where not required, unless the explicit return increases clarity.
+Use the explicit `return` to increase clarity.
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
 
