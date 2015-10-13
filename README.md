@@ -448,7 +448,7 @@ To iterate over the keys and values of objects:
 ```coffeescript
 object = one: 1, two: 2
 for key, value of object
-  alert("#{key} = #{value}")
+  alert "#{key} = #{value}"
 ```
 
 <a name="exceptions"/>
