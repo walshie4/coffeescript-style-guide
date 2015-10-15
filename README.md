@@ -15,6 +15,7 @@ The details in this guide have been very heavily inspired by several existing st
 - Thomas Reynolds' [CoffeeScript-specific Style Guide][coffeescript-specific-style-guide]
 - Jeremy Ashkenas' [code review][spine-js-code-review] of [Spine][spine-js]
 - The [CoffeeScript FAQ][coffeescript-faq]
+- [Apiary's Coffeescript style guide][apiary-guide]
 
 ## Table of Contents
 
@@ -592,3 +593,4 @@ included = !!~ 'a long test string'.indexOf 'test' # No
 [coffeescript-specific-style-guide]: http://awardwinningfjords.com/2011/05/13/coffeescript-specific-style-guide.html
 [coffeescript-faq]: https://github.com/jashkenas/coffee-script/wiki/FAQ
 [camel-case-variations]: http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
+[apiary-guide]: https://github.com/apiaryio/coffeescript-style-guide
