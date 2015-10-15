@@ -174,19 +174,22 @@ Avoid extraneous whitespace in the following situations:
 - Immediately inside parentheses, brackets or braces
 
     ```coffeescript
-       ($ 'body') # Yes
-       ( $ 'body' ) # No
+       ($ 'body')    # Yes
+       "#{ sample }" # Yes
+       ( $ 'body' )  # No
+       "#{sample}"   # No
     ```
 
 - Immediately before a comma
 
     ```coffeescript
-       console.log x, y # Yes
+       console.log x, y  # Yes
        console.log x , y # No
     ```
 
 
-- Always surround these binary operators with a single space on either side. Additional spaces may be used on the left side to align operators for better readability.
+- Always surround these binary operators with a single space on either side.
+Additional spaces may be used on the left side to align operators for better readability.
 
     - assignment: `=`
 
@@ -368,7 +371,13 @@ foo = (sample_name,
        control_value        = 789,
        randomization_factor = 16.0) -> # Yes
 
-foo = (sample_name, sample_value, testing_object, control_value, randomization_factor) -> # No
+foo = (sample_name, sample_value, testing_object, control_value = 789, randomization_factor = 16.0) -> # No
+
+foo = (sample_name,
+       sample_value,
+       testing_object,
+       control_value = 789,
+       randomization_factor = 16.0) -> # No
 ```
 
 Note that when default parameter values are used they are aligned as mentioned
@@ -407,11 +416,22 @@ new Tag(new Value(a, b), new Arg(c))
 Use string interpolation instead of string concatenation:
 
 ```coffeescript
-"this is an #{adjective} string"      # Yes
-"this is an " + adjective + " string" # No
+"this is an #{ adjective } string"      # Yes
+"this is an " + adjective + " string"   # No
 ```
 
-Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unless features like string interpolation are being used for the given string.
+Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unless
+features like string interpolation are being used for the given string.
+
+Use string blocks for large strings.
+
+```
+'''
+  Sample large string block.  Notice how it is
+  indented one level further than the code around
+  it as well.
+'''
+```
 
 <a name="conditionals"/>
 ## Conditionals
@@ -448,7 +468,7 @@ To iterate over the keys and values of objects:
 ```coffeescript
 object = one: 1, two: 2
 for key, value of object
-  alert "#{key} = #{value}"
+  alert "#{ key } = #{ value }"
 ```
 
 <a name="exceptions"/>
@@ -502,12 +522,7 @@ If a custom annotation is required, the annotation should be documented in the p
 
 `not` is preferred over `!`.
 
-`or=` should be used when possible:
-
-```coffeescript
-temp or= {}       # Yes
-temp = temp || {} # No
-```
+`?=` is preferred over `or=` when the same functionality is achieved.
 
 `0.54` is preferred over `.54`.
 
@@ -533,6 +548,36 @@ Use splats (`...`) when working with functions that accept variable numbers of a
 console.log args...   # Yes
 
 (a, b, c, rest...) -> # Yes
+```
+
+<a name="idioms"/>
+## Idioms
+
+* Beautiful is better than ugly
+* Explicit is better than implicit
+* Simple is better than complex
+* Flat is better than nested
+* Sparse is better than dense
+* Readability counts
+* Special cases aren't special enough to break the rules
+  * Although practicality beats purity
+* If the implementation is hard to explain, it's a bad idea
+* If the implementation is easy to explain, it might be a good idea
+* Consistency counts
+* DRY counts
+
+<a name="readability"/>
+## Readability
+
+Strive for readability.  Code is written once, but read many times.
+
+Too much syntactic sugar causes diabetes. Don't use something just because it's
+cool. Never use something in case you even _slightly_ hesitate that you may be
+the only person in the company being aware of how it works:
+
+```coffeescript
+included = 'a long test string'.indexOf('test') isnt -1 # Yes
+included = !!~ 'a long test string'.indexOf 'test' # No
 ```
 
 
